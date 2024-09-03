@@ -5,45 +5,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const portalBtn = document.getElementById("portal-btn");
   const newShopBtn = document.getElementById("new-shop-btn");
   const oldShopBtn = document.getElementById("old-shop-btn");
-  const marketingJobsBtn = document.getElementById("marketing-jobs-btn");
+  // const marketingJobsBtn = document.getElementById("marketing-jobs-btn");
   const idInput = document.getElementById("feature-id");
   const storeInput = document.getElementById("store-id");
-  const resetCacheBtn = document.getElementById("reset-cache");
 
   const innerTest1Btn = document.getElementById("innertest1-btn");
   const innerTest2Btn = document.getElementById("innertest2-btn");
-
-  const getServerUrl = (env, project = null, featureId = null) => {
-    if (env == "teste") {
-      return "https://teste.sweed.app/api/";
-    } else if (env == "dev") {
-      return "https://dev.sweed.app/api/";
-    } else if (env == "demo") {
-      return "https://demo.sweed.app/api/";
-    } else if (env == "feature") {
-      return `https://feature-${project}-${featureId}.sweed.app/api/`;
-    } else {
-      showErrorBanner();
-    }
-  };
-
-  const showSuccessBanner = () => {
-    var banner = document.getElementById("banner");
-    banner.classList.remove("d-none"); // Show the banner
-
-    setTimeout(function () {
-      banner.classList.add("d-none"); // Hide the banner after 2 seconds
-    }, 2000);
-  };
-
-  const showErrorBanner = () => {
-    var banner = document.getElementById("banner-error");
-    banner.classList.remove("d-none"); // Show the banner
-
-    setTimeout(function () {
-      banner.classList.add("d-none"); // Hide the banner after 2 seconds
-    }, 2000);
-  };
 
   const saveState = () => {
     if (!chrome.storage) {
@@ -77,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
           if (data.state.environment === "feature") {
             featureOptions.style.display = "block";
           } else if (data.state.environment === "prod") {
-            prodOptions.style.display = "block";
+            prodOptions.style.display = "contents";
           }
         }
         if (data.state.project) {
@@ -175,12 +142,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  marketingJobsBtn.addEventListener("click", () => {
-    const env = getSelectedEnvironment();
-    openTab(
-      `http://marketing-automation.${project}-${id}.svc.cluster.local:5005/jobs/recurring?from=0&count=5000`
-    );
-  });
+  // marketingJobsBtn.addEventListener("click", () => {
+  //   const env = getSelectedEnvironment();
+  //   openTab(
+  //     `http://marketing-automation.${project}-${id}.svc.cluster.local:5005/jobs/recurring?from=0&count=5000`
+  //   );
+  // });
 
   innerTest1Btn.addEventListener("click", () => {
     openTab(`https://inner-test.sweed.app/`);
@@ -188,36 +155,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   innerTest2Btn.addEventListener("click", () => {
     openTab(`https://inner-test2.sweed.app/`);
-  });
-
-  resetCacheBtn.addEventListener("click", () => {
-    const { project, id, storeId } = getParams();
-    const env = getSelectedEnvironment();
-    const myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-
-    const raw = JSON.stringify({
-      id: "01A76CBF-921D-4AAA-8FAB-A01B4B0AC462",
-      name: "consumer.catalog.product.list",
-      params: {
-        page: 1,
-        pageSize: 1,
-        storeId: storeId,
-        reload: true,
-      },
-    });
-
-    const requestOptions = {
-      method: "POST",
-      headers: myHeaders,
-      body: raw,
-      redirect: "follow",
-    };
-
-    fetch(getServerUrl(env, project, id), requestOptions)
-      .then((response) => response.text())
-      .then((result) => showSuccessBanner())
-      .catch((error) => showErrorBanner());
   });
 
   restoreState();

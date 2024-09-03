@@ -34,9 +34,3 @@ button {
 .x-hidden {
   display: none;
 }
-
-.cache-banner {
-  position: absolute !important;
-  bottom: 0;
-  opacity: 0.7;
-}

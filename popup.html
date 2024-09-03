@@ -100,6 +100,17 @@
             checked=""
           />
           <label class="btn" for="ci">CI</label>
+
+          <input
+            type="radio"
+            class="btn-check"
+            name="project"
+            value="sweed"
+            id="sweed"
+            autocomplete="off"
+            checked=""
+          />
+          <label class="btn" for="sweed">SWEED</label>
         </div>
 
         <div class="divider-s"></div>
@@ -120,24 +131,16 @@
 
 
       <h4 style="font-size: 16px;">Store #</h3>
-      <div class="row p-0">
-        <div class="col-10">
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="store-id-span">#</span>
-            <input
-              id="store-id"
-              name="store-id"
-              type="number"
-              class="form-control"
-              placeholder="Store #"
-            />
-          </div>
-        </div>
-        <div class="col-2 px-2">
-          <button type="button" class="btn btn-secondary" id="reset-cache" title="Reset Cache">🔄</button>
-        </div>
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="store-id-span">#</span>
+        <input
+          id="store-id"
+          name="store-id"
+          type="number"
+          class="form-control"
+          placeholder="Store #"
+        />
       </div>
-      
 
       <button type="button" class="btn btn-info" id="portal-btn">Portal</button>
       <button type="button" class="btn btn-info" id="new-shop-btn">
@@ -146,9 +149,9 @@
       <button type="button" class="btn btn-info" id="old-shop-btn">
         Old Shop
       </button>
-      <button type="button" class="btn btn-info" id="marketing-jobs-btn" disabled>
+      <!-- <button type="button" class="btn btn-info" id="marketing-jobs-btn" disabled>
         Marketing Jobs
-      </button>
+      </button> -->
       <div id="prod-options" style="display: none" class="p-3 m-0 border-0 bd-example m-0 border-0">
         <button type="button" class="btn btn-info" id="innertest1-btn">
           Inner Test
@@ -158,12 +161,6 @@
         </button>
       </div>
     </form>
-    <div id="banner" class="cache-banner alert alert-success d-none" role="alert">
-      Cache is reset successfully
-    </div>
-    <div id="banner-error" class="cache-banner alert alert-danger d-none" role="alert">
-      Cache was not reset
-    </div>
 
     <script src="popup.js"></script>
   </body>
