@@ -1,0 +1,42 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 10px;
+  min-width: 400px;
+  max-width: 400px;
+}
+
+h3 {
+  margin: 0 0 10px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 5px;
+}
+
+button {
+  margin-top: 10px;
+  padding: 5px;
+}
+
+.divider-s {
+  height: 10px;
+}
+
+.divider-m {
+  height: 20px;
+}
+
+.x-hidden {
+  display: none;
+}
+
+.cache-banner {
+  position: absolute !important;
+  bottom: 0;
+  opacity: 0.7;
+}

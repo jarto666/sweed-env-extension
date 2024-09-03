@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "Environment Switcher",
+  "version": "1.0",
+  "description": "Open different environments based on the selection",
+  "permissions": ["storage", "*://*.sweed.app/*"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["css/*", "js/*"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
